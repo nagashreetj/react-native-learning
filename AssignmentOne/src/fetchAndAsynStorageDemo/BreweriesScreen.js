@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { FlatList, View, ActivityIndicator, AsyncStorage } from 'react-native';
-import { SearchBar } from 'react-native-elements';
-import ListItem from './ListItem'
-import { Text } from 'react-native';
+import { FlatList, View, ActivityIndicator, AsyncStorage} from 'react-native';
+import { SearchBar} from 'react-native-elements';
+import ListItem from '../fetchAndAsynStorageDemo/ListItem'
+import Icon from 'react-native-vector-icons/AntDesign';
+
 
 export default class BreweriesScreen extends Component {
   constructor(props) {
@@ -10,7 +11,16 @@ export default class BreweriesScreen extends Component {
     this.state = { isLoading: true, breweries: [], search: '' };
     this.arrayholder = [];
   }
+  static navigationOptions = (props)=>{
+   return {
+    headerRight: () => (
+     <Icon style={{marginEnd:20}}name="heart" size={20} color="red" onPress={() => props.navigation.navigate('FavItem')}/>
 
+    )
+    // header:null,
+
+   }
+};
   componentDidMount() {
     return fetch('https://api.openbrewerydb.org/breweries')
       .then((response) => response.json())
@@ -89,7 +99,6 @@ export default class BreweriesScreen extends Component {
             />
           )}
         />
-        <Text style={{ fontWeight: "bold", color: 'white', backgroundColor: '#DC7633', height: 40, textAlign: "center", textAlignVertical: "center", fontSize: 16 }} onPress={() => this.props.navigation.navigate('FavItem')}>show Favorites</Text>
       </View>
     );
   }

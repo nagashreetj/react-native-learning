@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 
 const ListItem = (props)=> {
     const [fav, setFav] = useState(false);
-    let favBreweries = [];
+    let favBreweries = []
     const makeFavorite = async () => {
         if(await AsyncStorage.getItem("fav_breweries")!=null)
        favBreweries=JSON.parse(await AsyncStorage.getItem("fav_breweries"));

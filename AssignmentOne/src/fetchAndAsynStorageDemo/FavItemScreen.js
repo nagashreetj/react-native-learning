@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text,View ,StyleSheet,AsyncStorage,FlatList } from 'react-native';
-import ListItem from './ListItem'
+import { View ,StyleSheet,AsyncStorage,FlatList } from 'react-native';
+import ListItem from '../fetchAndAsynStorageDemo/ListItem'
 
 export default class FavItemScreen extends Component {
     constructor(props){

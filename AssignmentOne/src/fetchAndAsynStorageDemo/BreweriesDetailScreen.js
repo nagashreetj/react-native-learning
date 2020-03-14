@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text,View ,StyleSheet,ActivityIndicator} from 'react-native';
+import { Text,View ,StyleSheet,ActivityIndicator,StatusBar} from 'react-native';
 
 export default class BreweriesDetailScreen extends Component {
     constructor(props){
@@ -8,6 +8,7 @@ export default class BreweriesDetailScreen extends Component {
       }
     
       componentDidMount(){
+        StatusBar.setHidden(false);
         console.log(this.props.navigation.state.params.id);
         return fetch(`https://api.openbrewerydb.org/breweries/${this.props.navigation.state.params.id}`)
           .then((response) => response.json())
